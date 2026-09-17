@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Eventos | GoUp Events</title>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         CABEÇALHO
+    ========================= -->
+
+    <header>
+
+        <nav>
+
+            <div class="logo">
+
+                <img
+                    src="assets/logo.jpg"
+                    alt="GoUp Events">
+
+            </div>
+
+
+            <ul>
+
+                <li>
+                    <a href="home.html">
+                        Início
+                    </a>
+                </li>
+
+                <li>
+                    <a href="eventos.html">
+                        Eventos
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Restaurantes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Esportes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Palestras
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Premium ⭐
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <div class="usuario-area">
+
+                <span id="nomeUsuario">
+                    Usuário
+                </span>
+
+                <button
+                    id="btnSair"
+                    class="btn-sair">
+
+                    Sair
+
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         CONTEÚDO
+    ========================= -->
+
+    <main class="pagina-categoria">
+
+
+        <!-- =========================
+             TÍTULO
+        ========================= -->
+
+        <section class="categoria-topo">
+
+            <p>
+                GOUP.EVENTS
+            </p>
+
+            <h1>
+                Eventos em Blumenau
+            </h1>
+
+            <span>
+                Encontre festas, feiras e experiências
+                para aproveitar a cidade.
+            </span>
+
+        </section>
+
+
+
+        <!-- =========================
+             FILTROS
+        ========================= -->
+
+        <section class="filtros">
+
+            <button
+                class="filtro ativo"
+                data-categoria="Todos">
+
+                Todos
+
+            </button>
+
+
+            <button
+                class="filtro"
+                data-categoria="Festas">
+
+                🎉 Festas
+
+            </button>
+
+
+            <button
+                class="filtro"
+                data-categoria="Shows">
+
+                🎤 Shows
+
+            </button>
+
+
+            <button
+                class="filtro"
+                data-categoria="Feiras">
+
+                🛍️ Feiras
+
+            </button>
+
+
+            <button
+                class="filtro"
+                data-categoria="Esportes">
+
+                🏃 Esportes
+
+            </button>
+
+
+            <button
+                class="filtro"
+                data-categoria="Palestras">
+
+                🎓 Palestras
+
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================
+             LISTA DE EVENTOS
+        ========================= -->
+
+        <section
+            class="lista-eventos"
+            id="listaEventos">
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================= -->
+
+    <footer>
+
+        <div class="logo">
+
+            <img
+                src="assets/logo.jpg"
+                alt="GoUp Events">
+
+        </div>
+
+
+        <p>
+            © 2026 GoUp.Events —
+            Descubra. Explore. Viva.
+        </p>
+
+    </footer>
+
+    <!-- =========================
+     MODAL DE DETALHES
+========================= -->
+
+<div class="modal-evento" id="modalEvento">
+
+    <div class="modal-evento-conteudo">
+
+        <button class="fechar-modal" id="fecharModal">
+            ✕
+        </button>
+
+        <img
+            id="modalImagem"
+            src=""
+            alt="">
+
+        <div class="modal-evento-info">
+
+            <span
+                class="evento-categoria"
+                id="modalCategoria">
+            </span>
+
+            <h2 id="modalNome"></h2>
+
+            <p id="modalData"></p>
+
+            <p id="modalLocal"></p>
+
+            <p id="modalDescricao"></p>
+
+            <button
+                class="btn-como-chegar"
+                id="btnComoChegar">
+
+                📍 Como chegar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        // =========================
+        // USUÁRIO LOGADO
+        // =========================
+
+        const nome = localStorage.getItem("nome");
+
+
+        if (nome) {
+
+            document.getElementById("nomeUsuario").textContent =
+                "👤 " + nome;
+
+        }
+
+
+        // =========================
+        // BOTÃO SAIR
+        // =========================
+
+        document
+            .getElementById("btnSair")
+            .addEventListener("click", function() {
+
+                window.location.href = "index.html";
+
+            });
+
+    </script>
+
+
+
+    <!-- =========================
+         ARQUIVO DE EVENTOS
+    ========================= -->
+
+    <script src="js/eventos.js"></script>
+
+
+
+    <!-- =========================
+         FUNCIONALIDADE DOS EVENTOS
+    ========================= -->
+
+    <script>
+
+        const listaEventos =
+            document.getElementById("listaEventos");
+
+
+        const filtros =
+            document.querySelectorAll(".filtro");
+
+            const modalEvento =
+    document.getElementById("modalEvento");
+
+const fecharModal =
+    document.getElementById("fecharModal");
+
+const modalImagem =
+    document.getElementById("modalImagem");
+
+const modalCategoria =
+    document.getElementById("modalCategoria");
+
+const modalNome =
+    document.getElementById("modalNome");
+
+const modalData =
+    document.getElementById("modalData");
+
+const modalLocal =
+    document.getElementById("modalLocal");
+
+const modalDescricao =
+    document.getElementById("modalDescricao");
+
+const btnComoChegar =
+    document.getElementById("btnComoChegar");
+
+
+
+        // =========================
+        // MOSTRAR EVENTOS
+        // =========================
+
+        function mostrarEventos(lista) {
+
+
+            // Limpa a lista atual
+
+            listaEventos.innerHTML = "";
+
+
+
+            // Caso não encontre eventos
+
+            if (lista.length === 0) {
+
+                listaEventos.innerHTML = `
+
+                    <p class="nenhum-evento">
+
+                        😕 Nenhum evento encontrado.
+
+                    </p>
+
+                `;
+
+                return;
+
+            }
+
+
+
+            // Cria cada card
+
+            lista.forEach(evento => {
+
+
+                const card =
+                    document.createElement("div");
+
+
+                card.classList.add("evento-card");
+
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${evento.imagem}"
+                        alt="${evento.nome}">
+
+
+                    <div class="evento-info">
+
+
+                        <span class="evento-categoria">
+
+                            ${evento.categoria}
+
+                        </span>
+
+
+                        <h3>
+
+                            ${evento.nome}
+
+                        </h3>
+
+
+                        <p>
+
+                            📅 ${evento.data}
+
+                        </p>
+
+
+                        <p>
+
+                            📍 ${evento.local}
+
+                        </p>
+
+
+                        <p>
+
+                            ${evento.descricao}
+
+                        </p>
+
+
+                        <button class="btn-detalhes">
+
+                            Ver detalhes
+
+                        </button>
+
+
+                    </div>
+
+                `;
+
+
+
+                listaEventos.appendChild(card);
+
+            });
+
+        }
+
+        const botaoDetalhes =
+    card.querySelector(".btn-detalhes");
+
+
+botaoDetalhes.addEventListener("click", function() {
+
+    modalImagem.src = evento.imagem;
+
+    modalImagem.alt = evento.nome;
+
+    modalCategoria.textContent =
+        evento.categoria;
+
+    modalNome.textContent =
+        evento.nome;
+
+    modalData.textContent =
+        "📅 " + evento.data;
+
+    modalLocal.textContent =
+        "📍 " + evento.local;
+
+    modalDescricao.textContent =
+        evento.descricao;
+
+
+    btnComoChegar.onclick = function() {
+
+        const endereco =
+            encodeURIComponent(evento.local);
+
+        window.open(
+            "https://www.google.com/maps/search/?api=1&query=" + endereco,
+            "_blank"
+        );
+
+    };
+
+
+    modalEvento.classList.add("ativo");
+
+});
+
+
+
+        // =========================
+        // MOSTRAR TODOS AO ABRIR
+        // =========================
+
+        mostrarEventos(eventos);
+
+
+
+        // =========================
+        // FILTROS
+        // =========================
+
+        filtros.forEach(filtro => {
+
+
+            filtro.addEventListener("click", function() {
+
+
+                // Remove o ativo dos outros
+
+                filtros.forEach(f => {
+
+                    f.classList.remove("ativo");
+
+                });
+
+
+
+                // Ativa o botão clicado
+
+                this.classList.add("ativo");
+
+
+
+                // Descobre a categoria
+
+                const categoria =
+                    this.dataset.categoria;
+
+
+
+                // =========================
+                // TODOS
+                // =========================
+
+                if (categoria === "Todos") {
+
+                    mostrarEventos(eventos);
+
+                    return;
+
+                }
+
+
+
+                // =========================
+                // FILTRAR
+                // =========================
+
+                const eventosFiltrados =
+                    eventos.filter(evento => {
+
+                        return evento.categoria === categoria;
+
+                    });
+
+
+
+                mostrarEventos(eventosFiltrados);
+
+            });
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

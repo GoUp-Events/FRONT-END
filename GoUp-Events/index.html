@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>GoUp Events</title>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <nav>
+
+            <div class="logo">
+                <img src="assets/logo.jpg" alt="GoUp">
+            </div>
+
+            <ul>
+            
+                <li><a href="#">Sobre nós</a></li>
+            </ul>
+
+            <div class="login-area">
+                <button class="btn-entrar" id="btnEntrar">Entrar</button>
+                <a href="#" id="abrirCadastro">Se cadastrar</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- ÁREA PRINCIPAL -->
+    <section class="hero">
+
+        <!-- TEXTO CENTRAL -->
+        <div class="hero-conteudo">
+
+            <h1>
+                Descubra o que está rolando!
+            </h1>
+
+            <p>
+                Encontre eventos, festas, shows e experiências perto de você.
+            </p>
+
+        </div>
+
+
+        <!-- MOSAICO DE IMAGENS -->
+        <div class="mosaico">
+
+            <div class="foto foto1">
+                <img src="assets/ciclismo.jpg" alt="Evento de ciclismo">
+            </div>
+
+            <div class="foto foto2">
+                <img src="assets/esporte.jpg" alt="Evento esportivo">
+            </div>
+
+            <div class="foto foto3">
+                <img src="assets/festa.jpg" alt="Evento de festa">
+            </div>
+
+            <div class="foto foto4">
+                <img src="assets/oktoberfest.jpg" alt="Oktoberfest">
+            </div>
+
+            <div class="foto foto5">
+                <img src="assets/show.jpg" alt="Show musical">
+            </div>
+
+            <!-- ESCURECIMENTO DAS FOTOS -->
+            <div class="camada"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MODAL DE LOGIN -->
+    <div id="modalLogin" class="modal-login">
+
+        <div class="login-box">
+
+            <button id="fecharLogin" class="fechar">×</button>
+
+            <h2>Entrar</h2>
+
+            <input 
+                type="email" 
+                id="emailLogin" 
+                placeholder="E-mail"
+            >
+
+            <input 
+                type="password" 
+                id="senhaLogin" 
+                placeholder="Senha"
+            >
+
+            <button id="confirmarLogin" class="btn-login">
+                Entrar
+            </button>
+
+            <p>
+                Ainda não tem uma conta?
+                <a href="#" class="btn-cadastro" id="btnCadastro">Se cadastrar</a>
+            </p>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- MODAL DE CADASTRO -->
+<div id="modalCadastro" class="modal-login">
+
+    <div class="login-box">
+
+        <button id="fecharCadastro" class="fechar">×</button>
+
+        <h2>Criar conta</h2>
+
+        <input
+            type="text"
+            id="nomeCadastro"
+            placeholder="Nome"
+        >
+
+        <input
+            type="email"
+            id="emailCadastro"
+            placeholder="E-mail"
+        >
+
+        <input
+            type="password"
+            id="senhaCadastro"
+            placeholder="Senha"
+        >
+
+        <input
+            type="password"
+            id="confirmarSenha"
+            placeholder="Confirmar senha"
+        >
+
+        <button type="button" id="confirmarCadastro">
+            Cadastrar
+        </button>
+
+        <p>
+            Já possui uma conta?
+            <a href="#" id="voltarLogin">Entrar</a>
+        </p>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
